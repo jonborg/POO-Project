@@ -94,7 +94,7 @@ public class Interactive implements IGame {
 				case "h":
 					int[] toHold = {0};
 					if(command.length() > 1){
-						String[] toKeep = command.substring(1).split(" ");
+						String[] toKeep = command.substring(2).split(" ");
 						toHold = new int[toKeep.length];
 						int i = 0;
 						for(String index : toKeep){

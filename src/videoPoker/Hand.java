@@ -3,7 +3,7 @@ package videoPoker;
 import java.util.ArrayList;
 
 public class Hand {
-	ArrayList<Card> cards; //each card on hand
+	ArrayList<Card> cards=new ArrayList<Card>(); //each card on hand
 	int[] hand = {0b0, 0b0, 0b0, 0b0};	//vector to the bitmask for each suit of the hand
 	
 	public void genHand(){

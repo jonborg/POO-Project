@@ -24,19 +24,19 @@ public class Deck {
 	//{ ACE, KING, QUEEN, JACK, TEN, NINE, EIGHT, SEVEN, SIX, FIVE, FOUR, THREE, TWO };
 
 	
-	Deck(String inputDeck){
+	Deck(String[] inputDeck){
 		int rank,suit;
 		cards = new ArrayList<Card>();
 
-		for (int i=0;i<inputDeck.length()-2;i=i+3){
-			switch (inputDeck.charAt(i+1)){
+		for (int i=0;i<inputDeck.length;i++){
+			switch (inputDeck[i].charAt(1)){
 			case 'H':suit=0;break;
 			case 'S':suit=1;break;
 			case 'D':suit=2;break;
 			case 'C':suit=3;break;
 			default:;return;
 			}
-			switch (inputDeck.charAt(i)){
+			switch (inputDeck[i].charAt(0)){
 			case 'A':rank=0;break;
 			case 'K':rank=1;break;
 			case 'Q':rank=2;break;
@@ -53,9 +53,9 @@ public class Deck {
 			default:return; 
 			}
 			cards.add( new Card(suit, rank) );
-
+			
 		}
-				
+			System.out.println(this.toString());	;
 	}
 	
 	public void shuffle(){
