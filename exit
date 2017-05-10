@@ -1,0 +1,310 @@
+[33mcommit de9dd68bfd20818910f68432d54851cef19f2c4f[m
+Author: jonborg <joaomanborges@hotmail.com>
+Date:   Sun Apr 30 19:03:42 2017 +0100
+
+    first commit
+
+[1mdiff --git a/.classpath b/.classpath[m
+[1mnew file mode 100644[m
+[1mindex 0000000..fceb480[m
+[1m--- /dev/null[m
+[1m+++ b/.classpath[m
+[36m@@ -0,0 +1,6 @@[m
+[32m+[m[32m<?xml version="1.0" encoding="UTF-8"?>[m
+[32m+[m[32m<classpath>[m
+[32m+[m	[32m<classpathentry kind="src" path="src"/>[m
+[32m+[m	[32m<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-1.8"/>[m
+[32m+[m	[32m<classpathentry kind="output" path="bin"/>[m
+[32m+[m[32m</classpath>[m
+[1mdiff --git a/.project b/.project[m
+[1mnew file mode 100644[m
+[1mindex 0000000..aeb864b[m
+[1m--- /dev/null[m
+[1m+++ b/.project[m
+[36m@@ -0,0 +1,17 @@[m
+[32m+[m[32m<?xml version="1.0" encoding="UTF-8"?>[m
+[32m+[m[32m<projectDescription>[m
+[32m+[m	[32m<name>PokerProject</name>[m
+[32m+[m	[32m<comment></comment>[m
+[32m+[m	[32m<projects>[m
+[32m+[m	[32m</projects>[m
+[32m+[m	[32m<buildSpec>[m
+[32m+[m		[32m<buildCommand>[m
+[32m+[m			[32m<name>org.eclipse.jdt.core.javabuilder</name>[m
+[32m+[m			[32m<arguments>[m
+[32m+[m			[32m</arguments>[m
+[32m+[m		[32m</buildCommand>[m
+[32m+[m	[32m</buildSpec>[m
+[32m+[m	[32m<natures>[m
+[32m+[m		[32m<nature>org.eclipse.jdt.core.javanature</nature>[m
+[32m+[m	[32m</natures>[m
+[32m+[m[32m</projectDescription>[m
+[1mdiff --git a/.settings/org.eclipse.jdt.core.prefs b/.settings/org.eclipse.jdt.core.prefs[m
+[1mnew file mode 100644[m
+[1mindex 0000000..3a21537[m
+[1m--- /dev/null[m
+[1m+++ b/.settings/org.eclipse.jdt.core.prefs[m
+[36m@@ -0,0 +1,11 @@[m
+[32m+[m[32meclipse.preferences.version=1[m
+[32m+[m[32morg.eclipse.jdt.core.compiler.codegen.inlineJsrBytecode=enabled[m
+[32m+[m[32morg.eclipse.jdt.core.compiler.codegen.targetPlatform=1.8[m
+[32m+[m[32morg.eclipse.jdt.core.compiler.codegen.unusedLocal=preserve[m
+[32m+[m[32morg.eclipse.jdt.core.compiler.compliance=1.8[m
+[32m+[m[32morg.eclipse.jdt.core.compiler.debug.lineNumber=generate[m
+[32m+[m[32morg.eclipse.jdt.core.compiler.debug.localVariable=generate[m
+[32m+[m[32morg.eclipse.jdt.core.compiler.debug.sourceFile=generate[m
+[32m+[m[32morg.eclipse.jdt.core.compiler.problem.assertIdentifier=error[m
+[32m+[m[32morg.eclipse.jdt.core.compiler.problem.enumIdentifier=error[m
+[32m+[m[32morg.eclipse.jdt.core.compiler.source=1.8[m
+[1mdiff --git a/README b/README[m
+[1mnew file mode 100644[m
+[1mindex 0000000..862cc9e[m
+[1m--- /dev/null[m
+[1m+++ b/README[m
+[36m@@ -0,0 +1 @@[m
+[32m+[m[32mThis is a git repo[m
+[1mdiff --git a/bin/game/Card.class b/bin/game/Card.class[m
+[1mnew file mode 100644[m
+[1mindex 0000000..f47ebbd[m
+Binary files /dev/null and b/bin/game/Card.class differ
+[1mdiff --git a/bin/game/Deck.class b/bin/game/Deck.class[m
+[1mnew file mode 100644[m
+[1mindex 0000000..e659d39[m
+Binary files /dev/null and b/bin/game/Deck.class differ
+[1mdiff --git a/bin/game/Main.class b/bin/game/Main.class[m
+[1mnew file mode 100644[m
+[1mindex 0000000..02720dc[m
+Binary files /dev/null and b/bin/game/Main.class differ
+[1mdiff --git a/bin/game/Player.class b/bin/game/Player.class[m
+[1mnew file mode 100644[m
+[1mindex 0000000..44f65b1[m
+Binary files /dev/null and b/bin/game/Player.class differ
+[1mdiff --git a/bin/game/User.class b/bin/game/User.class[m
+[1mnew file mode 100644[m
+[1mindex 0000000..714f283[m
+Binary files /dev/null and b/bin/game/User.class differ
+[1mdiff --git a/src/game/Card.java b/src/game/Card.java[m
+[1mnew file mode 100644[m
+[1mindex 0000000..c154853[m
+[1m--- /dev/null[m
+[1m+++ b/src/game/Card.java[m
+[36m@@ -0,0 +1,20 @@[m
+[32m+[m[32mpackage game;[m
+[32m+[m
+[32m+[m[32mpublic class Card {[m
+[32m+[m[41m	[m
+[32m+[m	[32mpublic short naipe;[m
+[32m+[m	[32mpublic short number;[m
+[32m+[m[41m	[m
+[32m+[m	[32mpublic String[] naipes={"Diamonds","Hearts","Spades","Clubs"};[m
+[32m+[m	[32mpublic String[] numbers={"Ace","2","3","4","5","6","7","8","9","10","Jack","Queen","King"};[m
+[32m+[m[41m	[m
+[32m+[m	[32mpublic Card(short naipe, short number){[m
+[32m+[m		[32mthis.naipe=naipe;[m
+[32m+[m		[32mthis.number=number;[m
+[32m+[m	[32m}[m
+[32m+[m[41m	[m
+[32m+[m	[32mpublic String toString(){[m
+[32m+[m		[32mreturn numbers[number] + " of " + naipes[naipe] ;[m
+[32m+[m	[32m}[m
+[32m+[m
+[32m+[m[32m}[m
+[1mdiff --git a/src/game/Deck.java b/src/game/Deck.java[m
+[1mnew file mode 100644[m
+[1mindex 0000000..beb22ec[m
+[1m--- /dev/null[m
+[1m+++ b/src/game/Deck.java[m
+[36m@@ -0,0 +1,71 @@[m
+[32m+[m[32mpackage game;[m
+[32m+[m
+[32m+[m
+[32m+[m[32mimport java.util.ArrayList;[m
+[32m+[m[32mimport java.util.Collections;[m
+[32m+[m[32mimport java.util.HashMap;[m
+[32m+[m
+[32m+[m
+[32m+[m[32mpublic class Deck {[m
+[32m+[m[41m	[m
+[32m+[m	[32mpublic HashMap<Integer,Card> cards;[m
+[32m+[m	[32mpublic ArrayList<Integer> order;[m
+[32m+[m[41m	[m
+[32m+[m	[32mpublic Deck(){[m
+[32m+[m[41m		[m
+[32m+[m		[32mcards=new HashMap<Integer,Card>();[m
+[32m+[m		[32mfor (short naipe=0;naipe<4;naipe++){[m
+[32m+[m			[32mfor (short number=0;number<13;number++){[m
+[32m+[m				[32mcards.put(naipe*13+(number+1),new Card(naipe,number));[m
+[32m+[m[41m				[m
+[32m+[m[41m				[m
+[32m+[m			[32m}[m
+[32m+[m		[32m}[m
+[32m+[m[41m		[m
+[32m+[m	[32m}[m
+[32m+[m[41m	[m
+[32m+[m	[32mpublic void shuffle(){[m
+[32m+[m		[32morder=new ArrayList<Integer>();[m
+[32m+[m		[32mfor (int i=1;i<=52;i++){[m
+[32m+[m			[32morder.add(i);[m
+[32m+[m		[32m}[m
+[32m+[m		[32mCollections.shuffle(order);[m
+[32m+[m	[32m}[m
+[32m+[m[41m	[m
+[32m+[m	[32mpublic Card draw(){[m
+[32m+[m		[32mCard drawCard=cards.get(order.get(0));[m
+[32m+[m		[32morder.remove(0);[m
+[32m+[m		[32mreturn drawCard;[m
+[32m+[m	[32m}[m
+[32m+[m[41m	[m
+[32m+[m[41m	[m
+[32m+[m	[32mpublic String toString(){[m
+[32m+[m		[32mString deck = "";[m
+[32m+[m		[32mSystem.out.println(order.size());[m
+[32m+[m		[32mfor (int i=0;i<order.size();i++){[m
+[32m+[m			[32mdeck=deck+String.valueOf(i+1)+"º-" +cards.get(order.get(i)).toString()+ " ";[m
+[32m+[m		[32m}[m
+[32m+[m		[32mreturn deck;[m
+[32m+[m	[32m}[m
+[32m+[m[41m	[m
+[32m+[m	[32mpublic static void main(String[] args){[m
+[32m+[m		[32mDeck deck=new Deck();[m
+[32m+[m		[32mUser user = new User(5000);[m
+[32m+[m[41m		[m
+[32m+[m		[32mdeck.shuffle();[m
+[32m+[m		[32mSystem.out.println(deck.toString());[m
+[32m+[m[41m		[m
+[32m+[m		[32muser.draw(deck);[m
+[32m+[m		[32mSystem.out.println(deck.toString());[m
+[32m+[m[41m		[m
+[32m+[m		[32muser.showHand();[m
+[32m+[m		[32muser.showCredit();[m
+[32m+[m[41m		[m
+[32m+[m		[32muser.discard(3);[m
+[32m+[m		[32muser.discard(2);[m
+[32m+[m		[32muser.draw(deck);[m
+[32m+[m		[32muser.showHand();[m
+[32m+[m[41m		[m
+[32m+[m	[32m}[m
+[32m+[m[41m	[m
+[32m+[m[32m}[m
+[1mdiff --git a/src/game/Main.java b/src/game/Main.java[m
+[1mnew file mode 100644[m
+[1mindex 0000000..e776ae0[m
+[1m--- /dev/null[m
+[1m+++ b/src/game/Main.java[m
+[36m@@ -0,0 +1,58 @@[m
+[32m+[m[32mpackage game;[m
+[32m+[m
+[32m+[m[32mpublic class Main {[m
+[32m+[m[41m	[m
+[32m+[m	[32m/*Interactive Mode*/[m
+[32m+[m	[32mpublic static void interactive(int credit){[m
+[32m+[m		[32mDeck deck =new Deck();[m
+[32m+[m		[32mUser user=new User(credit);[m
+[32m+[m		[32mPlayer pc=new Player();[m
+[32m+[m[41m		[m
+[32m+[m		[32mwhile(true){[m
+[32m+[m			[32mdeck.shuffle();[m
+[32m+[m[41m			[m
+[32m+[m		[32m}[m
+[32m+[m[41m		[m
+[32m+[m[41m		[m
+[32m+[m	[32m}[m
+[32m+[m[41m	[m
+[32m+[m[41m	[m
+[32m+[m	[32m/*Debug Mode*/[m
+[32m+[m	[32mpublic static void debug(int credit, String cmdFile, String cardFile){[m
+[32m+[m[41m		[m
+[32m+[m	[32m}[m
+[32m+[m[41m	[m
+[32m+[m[41m	[m
+[32m+[m	[32m/*Simulation Mode*/[m
+[32m+[m	[32mpublic static void simulation(int credit, int bet, int nbdeals){[m
+[32m+[m[41m	[m
+[32m+[m	[32m}[m
+[32m+[m[41m	[m
+[32m+[m[41m	[m
+[32m+[m[41m	[m
+[32m+[m	[32mpublic static void main(String[] args){[m
+[32m+[m		[32mSystem.out.println(args[0]);[m
+[32m+[m		[32mswitch(args[0]){[m
+[32m+[m			[32mcase "-i":[m
+[32m+[m				[32mSystem.out.println("Interactive Mode\n");[m
+[32m+[m				[32minteractive(Integer.parseInt(args[1]));[m
+[32m+[m				[32mbreak;[m
+[32m+[m			[32mcase "-d":[m
+[32m+[m				[32mSystem.out.println("Debug Mode\n");[m
+[32m+[m				[32mdebug(Integer.parseInt(args[1]),args[2],args[3]);[m
+[32m+[m				[32mbreak;[m
+[32m+[m			[32mcase "-s":[m
+[32m+[m				[32mSystem.out.println("Simulation Mode\n");[m
+[32m+[m				[32msimulation(Integer.parseInt(args[1]),Integer.parseInt(args[2]),Integer.parseInt(args[3]));[m
+[32m+[m				[32mbreak;[m
+[32m+[m			[32mdefault:[m
+[32m+[m				[32mSystem.out.println("ERROR: Wrong Input for Mode:");[m
+[32m+[m				[32mSystem.out.println("Interactive Mode: -i");[m
+[32m+[m				[32mSystem.out.println("Debug Mode: -d");[m
+[32m+[m				[32mSystem.out.println("Simulation Mode: -s");[m
+[32m+[m		[32m}[m
+[32m+[m[41m		[m
+[32m+[m[41m		[m
+[32m+[m	[32m}[m
+[32m+[m
+[32m+[m[32m}[m
+[1mdiff --git a/src/game/Player.java b/src/game/Player.java[m
+[1mnew file mode 100644[m
+[1mindex 0000000..401748d[m
+[1m--- /dev/null[m
+[1m+++ b/src/game/Player.java[m
+[36m@@ -0,0 +1,26 @@[m
+[32m+[m[32mpackage game;[m
+[32m+[m
+[32m+[m[32mimport java.util.ArrayList;[m
+[32m+[m
+[32m+[m[32mpublic  class Player {[m
+[32m+[m[41m	[m
+[32m+[m	[32mprivate ArrayList<Card> hand=new ArrayList<Card>();[m
+[32m+[m[41m	[m
+[32m+[m	[32mpublic Player(){}[m
+[32m+[m[41m	[m
+[32m+[m	[32mvoid showHand(){[m
+[32m+[m		[32mSystem.out.println(hand.toString());[m
+[32m+[m	[32m}[m
+[32m+[m[41m	[m
+[32m+[m	[32mvoid draw(Deck deck){[m
+[32m+[m		[32mwhile (hand.size()<5){[m
+[32m+[m			[32mhand.add(deck.draw());[m
+[32m+[m		[32m}[m
+[32m+[m	[32m}[m
+[32m+[m[41m	[m
+[32m+[m	[32mvoid discard (int index){[m
+[32m+[m		[32mhand.remove(index);[m[41m	[m
+[32m+[m	[32m}[m
+[32m+[m[41m	[m
+[32m+[m
+[32m+[m[32m}[m
+[1mdiff --git a/src/game/User.java b/src/game/User.java[m
+[1mnew file mode 100644[m
+[1mindex 0000000..6e18032[m
+[1m--- /dev/null[m
+[1m+++ b/src/game/User.java[m
+[36m@@ -0,0 +1,20 @@[m
+[32m+[m[32mpackage game;[m
+[32m+[m
+[32m+[m[32mpublic class User extends Player{[m
+[32m+[m[41m	[m
+[32m+[m	[32mpublic int credit;[m
+[32m+[m[41m	[m
+[32m+[m	[32mpublic User(int credit){[m
+[32m+[m		[32mthis.credit=credit;[m
+[32m+[m	[32m}[m
+[32m+[m[41m	[m
+[32m+[m	[32mpublic void addCredit(int add){[m
+[32m+[m		[32mcredit = credit + add;[m
+[32m+[m	[32m}[m
+[32m+[m[41m	[m
+[32m+[m	[32mpublic void showCredit(){[m
+[32m+[m		[32mSystem.out.println(String.valueOf(credit));[m
+[32m+[m	[32m}[m
+[32m+[m[41m	[m
+[32m+[m
+[32m+[m[32m}[m
