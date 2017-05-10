@@ -63,7 +63,7 @@ public class PokerGUI {
 		
 		JPanel panel = new JPanel();
 		frmPokerGame.getContentPane().add(panel, BorderLayout.CENTER);
-		
+
 		JLabel lblChooseGameMode = new JLabel("Choose Game Mode");
 		lblChooseGameMode.setVerticalAlignment(SwingConstants.TOP);
 		lblChooseGameMode.setFont(new Font("Stencil", Font.BOLD, 18));
