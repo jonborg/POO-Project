@@ -7,17 +7,23 @@ public class Debug implements IGame {
 	public static void main(String[] args){
 		Debug Game = new Debug();
 		Player player = new Player(500);
-		Deck deck = new Deck();	
-		Game.run(player, deck);
+		try {
+			Deck deck = new Deck(loadFile("card-file.txt").readLine());	
+			System.out.println(deck.toString());
+			Game.run(player, deck);
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		
 	}
 	
 		
-	public BufferedReader loadFile(String file){
+	public static BufferedReader loadFile(String file){
 		try{
 			BufferedReader line = new BufferedReader(new FileReader(file));
 			return line;
-		}catch(FileNotFoundException exception){
-			System.out.println(exception.getMessage());
+		}catch(FileNotFoundException e){
+		
 		}
 		return null;
 		
@@ -27,6 +33,8 @@ public class Debug implements IGame {
 	@Override
 	public void run(Player player, Deck deck) {
 		// TODO Auto-generated method stub
+		
+		
 		
 	}
 
