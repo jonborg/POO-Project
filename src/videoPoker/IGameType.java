@@ -1,5 +1,5 @@
 package videoPoker;
 
 public interface IGameType {
-	Object select(IGame Interactive, IGame Debug, IGame Simulation, Object x);
+	ParentGame select(IGame l1, IGame l2, IGame l3, Object x);
 }

@@ -1,6 +1,6 @@
 package videoPoker;
 
-public class Debug extends ParentGame implements IGame {
+public class Simulation extends ParentGame implements IGame {
 	
 	@Override
 	public ParentGame apply(Object x) {
