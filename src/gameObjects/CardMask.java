@@ -1,4 +1,4 @@
-package videoPoker;
+package gameObjects;
 
 public class CardMask {
 	static int ACE = 0b00010000000000000000;

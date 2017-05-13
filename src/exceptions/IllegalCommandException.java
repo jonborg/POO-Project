@@ -1,7 +1,7 @@
 package exceptions;
 
-public class IllegalCommandException extends Exception {
-	public IllegalCommandException(String command){
+public class IllegalCOmmandException extends Exception{
+	public IllegalCOmmandException(String command){
 		super(command + ":  illegal command");
 	}
-}  
+}

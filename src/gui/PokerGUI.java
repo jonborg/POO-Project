@@ -1,4 +1,4 @@
-package videoPoker;
+package gui;
 
 import java.awt.EventQueue;
 
@@ -16,6 +16,17 @@ import javax.swing.GroupLayout;
 import javax.swing.GroupLayout.Alignment;
 import javax.swing.JCheckBox;
 import javax.swing.LayoutStyle.ComponentPlacement;
+
+import videoPoker.Debug;
+import videoPoker.DebugMode;
+import videoPoker.IGame;
+import videoPoker.IGameType;
+import videoPoker.Interactive;
+import videoPoker.InteractiveMode;
+import videoPoker.ParentGame;
+import videoPoker.Simulation;
+import videoPoker.SimulationMode;
+
 import javax.swing.JRadioButton;
 import javax.swing.JList;
 import javax.swing.AbstractListModel;
@@ -33,6 +44,7 @@ public class PokerGUI {
 
 	private JFrame frmPokerGame;
 	private final ButtonGroup buttonGroup = new ButtonGroup();
+	private ParentGame game;
 
 	/**
 	 * Launch the application.
@@ -86,13 +98,6 @@ public class PokerGUI {
 		rdbtnInteractiveMode.setVerticalAlignment(SwingConstants.TOP);
 		buttonGroup.add(rdbtnInteractiveMode);
 
-		JRadioButton rdbtnDebugMode = new JRadioButton("Debug Mode");
-		rdbtnDebugMode.setActionCommand("Debug Mode");
-		rdbtnDebugMode.setBackground(new Color(0, 128, 0));
-		rdbtnDebugMode.setToolTipText("Load a file to read commands from");
-		rdbtnDebugMode.setVerticalAlignment(SwingConstants.TOP);
-		buttonGroup.add(rdbtnDebugMode);
-
 		JRadioButton rdbtnSimulationMode = new JRadioButton("Simulation Mode");
 		rdbtnSimulationMode.setActionCommand("Simulation Mode");
 		rdbtnSimulationMode.setBackground(new Color(0, 128, 0));
@@ -118,57 +123,51 @@ public class PokerGUI {
 		btnStart.setFont(new Font("Times New Roman", Font.BOLD, 14));
 		GroupLayout gl_panel = new GroupLayout(panel);
 		gl_panel.setHorizontalGroup(
-				gl_panel.createParallelGroup(Alignment.LEADING)
+			gl_panel.createParallelGroup(Alignment.LEADING)
 				.addGroup(gl_panel.createSequentialGroup()
-						.addGroup(gl_panel.createParallelGroup(Alignment.LEADING)
-								.addGroup(gl_panel.createSequentialGroup()
-										.addGap(89)
-										.addComponent(lblChooseGameMode, GroupLayout.PREFERRED_SIZE, 191, GroupLayout.PREFERRED_SIZE))
-								.addGroup(gl_panel.createSequentialGroup()
-										.addGap(119)
-										.addComponent(rdbtnInteractiveMode))
-								.addGroup(gl_panel.createSequentialGroup()
-										.addGap(119)
-										.addComponent(rdbtnDebugMode))
-								.addGroup(gl_panel.createSequentialGroup()
-										.addGap(119)
-										.addComponent(rdbtnSimulationMode, GroupLayout.PREFERRED_SIZE, 130, GroupLayout.PREFERRED_SIZE))
-								.addGroup(gl_panel.createSequentialGroup()
-										.addGap(116)
-										.addComponent(lblStartingCredit))
-								.addGroup(gl_panel.createSequentialGroup()
-										.addGap(157)
-										.addComponent(spinner, GroupLayout.PREFERRED_SIZE, 55, GroupLayout.PREFERRED_SIZE)
-										.addPreferredGap(ComponentPlacement.RELATED)
-										.addComponent(lblCredits))
-								.addGroup(gl_panel.createSequentialGroup()
-										.addGap(144)
-										.addComponent(btnStart)))
-						.addContainerGap(88, Short.MAX_VALUE))
-				);
+					.addGroup(gl_panel.createParallelGroup(Alignment.LEADING)
+						.addGroup(gl_panel.createSequentialGroup()
+							.addGap(89)
+							.addComponent(lblChooseGameMode, GroupLayout.PREFERRED_SIZE, 191, GroupLayout.PREFERRED_SIZE))
+						.addGroup(gl_panel.createSequentialGroup()
+							.addGap(116)
+							.addComponent(lblStartingCredit))
+						.addGroup(gl_panel.createSequentialGroup()
+							.addGap(157)
+							.addComponent(spinner, GroupLayout.PREFERRED_SIZE, 55, GroupLayout.PREFERRED_SIZE)
+							.addPreferredGap(ComponentPlacement.RELATED)
+							.addComponent(lblCredits))
+						.addGroup(gl_panel.createSequentialGroup()
+							.addGap(144)
+							.addComponent(btnStart))
+						.addGroup(gl_panel.createSequentialGroup()
+							.addGap(119)
+							.addGroup(gl_panel.createParallelGroup(Alignment.LEADING)
+								.addComponent(rdbtnSimulationMode, GroupLayout.PREFERRED_SIZE, 130, GroupLayout.PREFERRED_SIZE)
+								.addComponent(rdbtnInteractiveMode))))
+					.addContainerGap(88, Short.MAX_VALUE))
+		);
 		gl_panel.setVerticalGroup(
-				gl_panel.createParallelGroup(Alignment.LEADING)
+			gl_panel.createParallelGroup(Alignment.LEADING)
 				.addGroup(gl_panel.createSequentialGroup()
-						.addContainerGap()
-						.addComponent(lblChooseGameMode)
-						.addPreferredGap(ComponentPlacement.RELATED)
-						.addComponent(rdbtnInteractiveMode, GroupLayout.PREFERRED_SIZE, 23, GroupLayout.PREFERRED_SIZE)
-						.addPreferredGap(ComponentPlacement.RELATED)
-						.addComponent(rdbtnDebugMode, GroupLayout.PREFERRED_SIZE, 23, GroupLayout.PREFERRED_SIZE)
-						.addPreferredGap(ComponentPlacement.RELATED)
-						.addComponent(rdbtnSimulationMode)
-						.addGap(41)
-						.addComponent(lblStartingCredit)
-						.addGap(6)
-						.addGroup(gl_panel.createParallelGroup(Alignment.BASELINE)
-								.addComponent(spinner, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-								.addComponent(lblCredits))
-						.addGap(31)
-						.addComponent(btnStart)
-						.addContainerGap(44, Short.MAX_VALUE))
-				);
-		gl_panel.linkSize(SwingConstants.VERTICAL, new Component[] {rdbtnInteractiveMode, rdbtnDebugMode, rdbtnSimulationMode});
-		gl_panel.linkSize(SwingConstants.HORIZONTAL, new Component[] {rdbtnInteractiveMode, rdbtnDebugMode, rdbtnSimulationMode});
+					.addContainerGap()
+					.addComponent(lblChooseGameMode)
+					.addPreferredGap(ComponentPlacement.RELATED)
+					.addComponent(rdbtnInteractiveMode, GroupLayout.PREFERRED_SIZE, 23, GroupLayout.PREFERRED_SIZE)
+					.addPreferredGap(ComponentPlacement.UNRELATED)
+					.addComponent(rdbtnSimulationMode)
+					.addGap(61)
+					.addComponent(lblStartingCredit)
+					.addGap(6)
+					.addGroup(gl_panel.createParallelGroup(Alignment.BASELINE)
+						.addComponent(spinner, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+						.addComponent(lblCredits))
+					.addGap(31)
+					.addComponent(btnStart)
+					.addContainerGap(44, Short.MAX_VALUE))
+		);
+		gl_panel.linkSize(SwingConstants.VERTICAL, new Component[] {rdbtnInteractiveMode, rdbtnSimulationMode});
+		gl_panel.linkSize(SwingConstants.HORIZONTAL, new Component[] {rdbtnInteractiveMode, rdbtnSimulationMode});
 		gl_panel.setAutoCreateGaps(true);
 		gl_panel.setAutoCreateContainerGaps(true);
 		panel.setLayout(gl_panel);
@@ -177,28 +176,29 @@ public class PokerGUI {
 
 	private class ActionStart implements ActionListener {
 		int balance;
+		int[] args = new int[3];
 		public ActionStart() {
 			balance = 0;
 			mode = null;
 		}
 		public void actionPerformed(ActionEvent e) {
 			balance = (Integer) spinner.getValue();
-			if (buttonGroup.getSelection().getActionCommand().equals("Interactive Mode"))
+			args[0] = balance;
+			if (buttonGroup.getSelection().getActionCommand().equals("Interactive Mode")){
 				mode = new InteractiveMode();
+				game = mode.select(new Interactive(balance), new Debug(0), new Simulation(args), balance);
+			}
 
-			if (buttonGroup.getSelection().getActionCommand().equals("Debug Mode"))
-				mode = new DebugMode();
-
-			if (buttonGroup.getSelection().getActionCommand().equals("Simulation Mode"))
+			if (buttonGroup.getSelection().getActionCommand().equals("Simulation Mode")) {
 				mode = new SimulationMode();
+				game = mode.select(new Interactive(0), new Debug(0), new Simulation(args), balance);
+			}
 
-			ParentGame game = new ParentGame();
-			game = mode.select(new Interactive(), new Debug(), new Simulation(), "Interactive");
 
 			frmPokerGame.dispose();
 
 			/*Open new window*/
-			InteractiveModeGUI window = new InteractiveModeGUI(game, balance);
+			GameGUI window = new GameGUI(game);
 			window.frmInteractiveVideoPoker.setVisible(true);
 
 		}

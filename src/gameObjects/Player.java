@@ -1,17 +1,25 @@
-package videoPoker;
+package gameObjects;
 
 public class Player {
-	Hand playerHand;
-	int credit;
+	public Hand playerHand;
+	double credit;
 	
 	
-	Player(int credit){
+	public Player(int credit){
 		this.credit = credit;
 		this.playerHand = new Hand();
 	}
+	
+	public Hand getHand(){
+		return playerHand;
+	}
+	
+	public double getCredit(){
+		return credit;
+	}
 		
-	public void addCredit(int toAdd){
-		credit += toAdd;
+	public void addCredit(double d){
+		credit += d;
 	}
 	
 	public void removeCredit(int toRemove){
