@@ -98,13 +98,6 @@ public class PokerGUI {
 		rdbtnInteractiveMode.setVerticalAlignment(SwingConstants.TOP);
 		buttonGroup.add(rdbtnInteractiveMode);
 
-		JRadioButton rdbtnSimulationMode = new JRadioButton("Simulation Mode");
-		rdbtnSimulationMode.setActionCommand("Simulation Mode");
-		rdbtnSimulationMode.setBackground(new Color(0, 128, 0));
-		rdbtnSimulationMode.setToolTipText("Play the perfect game and see some statistics");
-		rdbtnSimulationMode.setVerticalAlignment(SwingConstants.TOP);
-		buttonGroup.add(rdbtnSimulationMode);
-
 		JLabel lblStartingCredit = new JLabel("Starting credit");
 		lblStartingCredit.setFont(new Font("Stencil", Font.PLAIN, 16));
 
@@ -142,9 +135,7 @@ public class PokerGUI {
 							.addComponent(btnStart))
 						.addGroup(gl_panel.createSequentialGroup()
 							.addGap(119)
-							.addGroup(gl_panel.createParallelGroup(Alignment.LEADING)
-								.addComponent(rdbtnSimulationMode, GroupLayout.PREFERRED_SIZE, 130, GroupLayout.PREFERRED_SIZE)
-								.addComponent(rdbtnInteractiveMode))))
+							.addComponent(rdbtnInteractiveMode)))
 					.addContainerGap(88, Short.MAX_VALUE))
 		);
 		gl_panel.setVerticalGroup(
@@ -154,9 +145,7 @@ public class PokerGUI {
 					.addComponent(lblChooseGameMode)
 					.addPreferredGap(ComponentPlacement.RELATED)
 					.addComponent(rdbtnInteractiveMode, GroupLayout.PREFERRED_SIZE, 23, GroupLayout.PREFERRED_SIZE)
-					.addPreferredGap(ComponentPlacement.UNRELATED)
-					.addComponent(rdbtnSimulationMode)
-					.addGap(61)
+					.addGap(87)
 					.addComponent(lblStartingCredit)
 					.addGap(6)
 					.addGroup(gl_panel.createParallelGroup(Alignment.BASELINE)
@@ -166,8 +155,6 @@ public class PokerGUI {
 					.addComponent(btnStart)
 					.addContainerGap(44, Short.MAX_VALUE))
 		);
-		gl_panel.linkSize(SwingConstants.VERTICAL, new Component[] {rdbtnInteractiveMode, rdbtnSimulationMode});
-		gl_panel.linkSize(SwingConstants.HORIZONTAL, new Component[] {rdbtnInteractiveMode, rdbtnSimulationMode});
 		gl_panel.setAutoCreateGaps(true);
 		gl_panel.setAutoCreateContainerGaps(true);
 		panel.setLayout(gl_panel);
@@ -176,31 +163,24 @@ public class PokerGUI {
 
 	private class ActionStart implements ActionListener {
 		int balance;
-		int[] args = new int[3];
 		public ActionStart() {
 			balance = 0;
 			mode = null;
 		}
 		public void actionPerformed(ActionEvent e) {
+			int[] args = new int[3];
 			balance = (Integer) spinner.getValue();
-			args[0] = balance;
 			if (buttonGroup.getSelection().getActionCommand().equals("Interactive Mode")){
 				mode = new InteractiveMode();
 				game = mode.select(new Interactive(balance), new Debug(0), new Simulation(args), balance);
 			}
-
-			if (buttonGroup.getSelection().getActionCommand().equals("Simulation Mode")) {
-				mode = new SimulationMode();
-				game = mode.select(new Interactive(0), new Debug(0), new Simulation(args), balance);
-			}
-
 
 			frmPokerGame.dispose();
 
 			/*Open new window*/
 			GameGUI window = new GameGUI(game);
 			window.frmInteractiveVideoPoker.setVisible(true);
-
+			
 		}
 	}
 }
